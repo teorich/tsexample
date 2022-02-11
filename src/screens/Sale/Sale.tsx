@@ -16,8 +16,26 @@ import {useFocusEffect} from '@react-navigation/native';
 import CustomHeader from '../../screens/components/CustomHeader';
 import CheckList from '../components/CheckList';
 import {useTopBarMenu} from '../../providers/TopBarMenuProvider';
+import Tick from '../../assets/images/Tick.svg';
+import {useRegisterSession} from '../../providers/RegisterSession.provider';
+import {setRegisterSession} from '../../store/registerSession';
 
 import tw from '../../../tailwind';
+import {useReduxDispatch, useReduxSelector} from '../../store';
+import {useShops} from '../../providers/ShopProvider';
+
+const getCircularReplacer = () => {
+  const seen = new WeakSet();
+  return (key: any, value: any) => {
+    if (typeof value === 'object' && value !== null) {
+      if (seen.has(value)) {
+        return;
+      }
+      seen.add(value);
+    }
+    return value;
+  };
+};
 
 const items = [
   {id: '1', name: 'Pick n Pay', code: '#1abc9c', isChecked: false},
@@ -33,16 +51,14 @@ type SaleProps = {
   isSelected: boolean;
 };
 
-const SecondRoute = () => (
-  <ScrollView style={{flex: 1, backgroundColor: '#673ab7'}} />
-);
+const SecondRoute = () => <ScrollView style={tw.style(' bg-white')} />;
 
 const renderTabBar = props => (
   <TabBar
     labelStyle={tw.style(' text-dark justify-start content-start items-start')}
     {...props}
     indicatorStyle={tw.style('bg-blue')}
-    style={tw.style(' bg-white justify-start')}
+    style={tw.style('bg-[#E5E9F2] justify-start')}
   />
 );
 
@@ -53,13 +69,26 @@ const Sale: React.FC<SaleProps> = ({
   isSelected,
 }) => {
   const [showRegisterInput, setShowRegisterInput] = useState(false);
+  const [openingRegisterAmount, setOpeningRegisterAmount] =
+    useState<string>('');
+  const [showRegister, setShowRegister] = useState(true);
   const [index, setIndex] = React.useState(0);
   const layout = useWindowDimensions();
   const [routes] = React.useState([
     {key: 'first', title: 'REGULAR PRODUCTS'},
     {key: 'second', title: 'UNIVERSAL SHOP'},
   ]);
+  const [data, setData] = useState<any>([]);
   const {setMenu} = useTopBarMenu();
+  const {handleOpenRegisterSession, currentRegisterSession} =
+    useRegisterSession();
+
+  const {selectedShop} = useShops();
+
+  const selectedRegisterSession = useReduxSelector(
+    state => state.registerSession,
+  );
+  const dispatch = useReduxDispatch();
 
   const menuData = useMemo(
     () => [
@@ -100,36 +129,64 @@ const Sale: React.FC<SaleProps> = ({
     }, [setMenu, menuData]),
   );
 
+  useEffect(() => {
+    if (data.length) {
+      setIsSelected(true);
+    } else {
+      setIsSelected(false);
+    }
+  }, [data, setIsSelected]);
+
   const FirstRoute = () => {
     //   const [flexWrap, setFlexWrap] = useState('wrap');
-    const select = () => {
-      setIsSelected((prev: boolean) => !prev);
+
+    const OnCheckChange = checkItem => {
+      const arr = [...data];
+      const item = arr.findIndex(item => item._id === checkItem._id);
+      if (item > -1) {
+        arr.splice(item, 1);
+        setData(arr);
+        // can use a callback to update parent from here
+      } else {
+        setData((prev: any) => [...prev, checkItem]);
+      }
     };
+
+    const renderItem = ({item}) => (
+      <Pressable
+        onPress={() => OnCheckChange(item)}
+        style={tw.style('w-150px h-full  mx-3 mb-3 px-3 py-3 rounded')}>
+        <ImageBackground
+          source={require('../../assets/images/capachino2.png')}
+          resizeMode="cover"
+          style={tw.style('w-136px h-136px rounded relative')}>
+          {!!data.find((element: any) => element._id === item._id) && (
+            <View
+              style={tw.style('relative w-136px h-136px rounded items-center', {
+                backgroundColor: 'rgba(1, 182, 235, 0.6)',
+              })}>
+              <View
+                style={tw.style(
+                  'w-8 h-8 rounded-full items-center bg-white m-auto',
+                )}>
+                <View style={tw.style('items-center m-auto')}>
+                  <Tick />
+                </View>
+              </View>
+            </View>
+          )}
+        </ImageBackground>
+        <View>
+          <Text>{item.name}</Text>
+        </View>
+      </Pressable>
+    );
     return (
       <FlatList
         contentContainerStyle={tw.style(' px-3')}
-        data={items}
-        keyExtractor={item => item.id} //has to be unique
-        renderItem={() => (
-          <Pressable
-            onPress={() => select()}
-            style={tw.style('w-150px h-150px mx-3 mb-3 px-3 py-3 rounded')}>
-            <ImageBackground
-              source={require('../../assets/images/capachino2.png')}
-              resizeMode="cover"
-              style={tw.style('w-126px h-126px rounded p-10')}>
-              {/* <View
-                style={tw.style(' absolute w-full h-full rounded', {
-                  backgroundColor: 'rgba(1, 182, 235, 0.6)',
-                })}>
-                <Text>check</Text>
-              </View> */}
-            </ImageBackground>
-            <View>
-              <Text>cuppuchino</Text>
-            </View>
-          </Pressable>
-        )} //method to render the data in the way you want using styling u need
+        data={selectedShop.products}
+        keyExtractor={item => item._id} //has to be unique
+        renderItem={renderItem} //method to render the data in the way you want using styling u need
         horizontal={false}
         numColumns={2}
       />
@@ -141,6 +198,29 @@ const Sale: React.FC<SaleProps> = ({
     second: SecondRoute,
   });
 
+  const createRegisterSession = async () => {
+    if (showRegisterInput) {
+      if (parseFloat(openingRegisterAmount) > 0) {
+        try {
+          const result = await handleOpenRegisterSession(
+            parseFloat(openingRegisterAmount),
+          );
+          if (result) {
+            await dispatch(
+              setRegisterSession(
+                JSON.parse(JSON.stringify(result, getCircularReplacer())),
+              ),
+            );
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    } else {
+      setShowRegisterInput(true);
+    }
+  };
+
   return (
     <>
       <SafeAreaView style={tw.style('flex-1 bg-[#E5E9F2]')}>
@@ -150,70 +230,74 @@ const Sale: React.FC<SaleProps> = ({
           route={route}
           onSelect={() => {}}
         />
-        <View>
-          <View style={tw.style('m-5')}>
-            <TextInput
-              placeholder="Сhercher un produit par nom, code..."
-              style={tw.style(
-                'rounded bg-[#FFFFFF] w-full text-lg font-mulish border border-[#EDEEF0]',
-              )}
-            />
-          </View>
-          <View style={tw.style('bg-blue')}>
-            <View style={tw.style('m-5')}>
-              {showRegisterInput ? (
-                <View style={tw.style('')}>
-                  <Text
-                    style={tw.style(
-                      'text-white text-sm ml-5 leading-5 tracking-wide',
-                    )}>
-                    SAISIR LE MONTANT A L’OUVERTURE
-                  </Text>
-                </View>
-              ) : (
-                <View style={tw.style('m-auto')}>
-                  <Text
-                    style={tw.style(
-                      'text-white text-sm my-6 leading-5 tracking-wide',
-                    )}>
-                    Votre caisse est actuellement fermée
-                  </Text>
-                </View>
-              )}
-
-              {showRegisterInput && (
-                <View style={tw.style('m-5')}>
-                  <TextInput
-                    keyboardType="numeric"
-                    style={tw.style(
-                      'rounded bg-[#FFFFFF] w-full text-2xl font-mulish border border-[#EDEEF0]',
-                    )}
-                  />
-                </View>
-              )}
-
-              <Pressable
-                onPress={() => setShowRegisterInput(true)}
-                style={tw.style('h-14 bg-accent rounded mx-5')}>
+        <View style={tw.style('m-5')}>
+          <TextInput
+            placeholder="Сhercher un produit par nom, code..."
+            style={tw.style(
+              'rounded bg-[#FFFFFF] w-full text-lg font-mulish border border-[#EDEEF0]',
+            )}
+          />
+        </View>
+        {showRegister && !currentRegisterSession && (
+          <View>
+            <View style={tw.style('bg-blue')}>
+              <View style={tw.style('m-5')}>
                 {showRegisterInput ? (
-                  <Text
-                    style={tw.style(
-                      'm-auto font-extrabold text-dark uppercase',
-                    )}>
-                    OUVRIR
-                  </Text>
+                  <View style={tw.style('')}>
+                    <Text
+                      style={tw.style(
+                        'text-white text-sm ml-5 leading-5 tracking-wide',
+                      )}>
+                      SAISIR LE MONTANT A L’OUVERTURE
+                    </Text>
+                  </View>
                 ) : (
-                  <Text
-                    style={tw.style(
-                      'm-auto font-extrabold text-dark uppercase',
-                    )}>
-                    OUVRIR UNE CAISSE
-                  </Text>
+                  <View style={tw.style('m-auto')}>
+                    <Text
+                      style={tw.style(
+                        'text-white text-sm my-6 leading-5 tracking-wide',
+                      )}>
+                      Votre caisse est actuellement fermée
+                    </Text>
+                  </View>
                 )}
-              </Pressable>
+
+                {showRegisterInput && (
+                  <View style={tw.style('m-5')}>
+                    <TextInput
+                      onChangeText={setOpeningRegisterAmount}
+                      value={openingRegisterAmount}
+                      keyboardType="numeric"
+                      style={tw.style(
+                        'rounded bg-[#FFFFFF] w-full text-2xl font-mulish border border-[#EDEEF0]',
+                      )}
+                    />
+                  </View>
+                )}
+
+                <Pressable
+                  onPress={() => createRegisterSession()}
+                  style={tw.style('h-14 bg-accent rounded mx-5')}>
+                  {showRegisterInput ? (
+                    <Text
+                      style={tw.style(
+                        'm-auto font-extrabold text-dark uppercase',
+                      )}>
+                      OUVRIR
+                    </Text>
+                  ) : (
+                    <Text
+                      style={tw.style(
+                        'm-auto font-extrabold text-dark uppercase',
+                      )}>
+                      OUVRIR UNE CAISSE
+                    </Text>
+                  )}
+                </Pressable>
+              </View>
             </View>
           </View>
-        </View>
+        )}
         <View style={tw.style('flex-1')}>
           <TabView
             renderTabBar={renderTabBar}
@@ -224,7 +308,8 @@ const Sale: React.FC<SaleProps> = ({
           />
         </View>
         {isSelected && (
-          <View
+          <Pressable
+            onPress={() => navigation.navigate('AddClient', {data})}
             style={tw.style(
               'absolute border border-[#EDEEF0] items-center w-full h-50px bg-[#EDEEF0] bottom-0',
             )}>
@@ -234,7 +319,7 @@ const Sale: React.FC<SaleProps> = ({
               )}>
               Ajouter un Client
             </Text>
-          </View>
+          </Pressable>
         )}
       </SafeAreaView>
     </>

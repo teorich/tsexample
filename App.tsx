@@ -42,8 +42,6 @@ const App = () => {
 
   const [user, setUser] = useState<any>(null);
 
-  console.log(realmApp.currentUser?.id);
-
   // useEffect(() => {
   //   const init = async () => {
   //     // …do multiple sync or async tasks

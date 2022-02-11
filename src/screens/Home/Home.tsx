@@ -43,6 +43,7 @@ import CategoryList from '../Products/CategoryList';
 import Products from '../Products/Products';
 import {useShops} from '../../providers/ShopProvider';
 import Sale from '../Sale/Sale';
+import AddClient from '../Sale/AddClient';
 
 interface HomeProps {
   title?: string;
@@ -255,6 +256,18 @@ function SellStack({navigation}) {
         {props => {
           return (
             <Sale
+              isHome={false}
+              {...props}
+              setIsSelected={setIsSelected}
+              isSelected={isSelected}
+            />
+          );
+        }}
+      </Stack.Screen>
+      <Stack.Screen name="AddClient">
+        {props => {
+          return (
+            <AddClient
               isHome={false}
               {...props}
               setIsSelected={setIsSelected}

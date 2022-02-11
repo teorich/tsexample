@@ -1,4 +1,5 @@
 import {Formik, useFormikContext} from 'formik';
+import Realm from 'realm';
 import React, {useEffect, useRef, useState} from 'react';
 import {
   Image,
@@ -136,9 +137,7 @@ const CreateProduct: React.FunctionComponent<CreateProductsProps> = ({
 
   useEffect(() => {
     if (selectedValue) {
-      const result = agencyCategories.find(value =>
-        value.id.equals(selectedValue),
-      );
+      const result = agencyCategories.find(value => value.id === selectedValue);
       setSelectedCategory(result);
     }
   }, [selectedValue, agencyCategories]);
@@ -180,7 +179,9 @@ const CreateProduct: React.FunctionComponent<CreateProductsProps> = ({
   }, [params]);
 
   const create = async values => {
-    values.product_categories = [selectedCategory];
+    values.product_categories = [
+      {...selectedCategory, id: new Realm.BSON.ObjectId(selectedCategory.id)},
+    ];
     try {
       await handleAddProduct(values, _id, selectedAgency._id);
       // const shop = await handleGetOneShop(_id);

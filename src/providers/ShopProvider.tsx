@@ -37,7 +37,6 @@ const ShopsProvider = ({children}) => {
   const realmRef = useRef<Realm | null>(null);
 
   const subscriptionRef = useRef<Realm.Results<Shop> | null>(null);
-  const subscriptionShopRef = useRef<Realm.Results<Shop> | null>(null);
 
   const user = useReduxSelector(state => state.user.currentUser);
 
@@ -98,9 +97,14 @@ const ShopsProvider = ({children}) => {
         setShops(realm.objects('Shop'));
         if (storeShop._id) {
           setSelectedShop(
-            realm?.objectForPrimaryKey(
-              'Shop',
-              new Realm.BSON.ObjectId(storeShop._id),
+            JSON.parse(
+              JSON.stringify(
+                realm?.objectForPrimaryKey(
+                  'Shop',
+                  new Realm.BSON.ObjectId(storeShop._id),
+                ),
+                getCircularReplacer(),
+              ),
             ),
           );
         }

@@ -7,6 +7,7 @@ class User extends Realm.Object {
   _partition!: string;
   person!: any;
   shop!: any;
+  register_sessions!: any;
   user_id!: any;
   phone_number!: any;
   isVerified!: Boolean;

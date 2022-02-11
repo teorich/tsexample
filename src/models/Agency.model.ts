@@ -15,6 +15,7 @@ class Agency extends Realm.Object {
   banner!: string;
   employees!: Array<any>;
   registers!: Array<any>;
+  register_sessions!: Array<any>;
   product_categories!: Array<any>;
   customers!: Array<any>;
   paymentAccount!: Array<any>;
