@@ -95,26 +95,47 @@ const Sale: React.FC<SaleProps> = ({
       {
         label: 'Open register',
         value: '1',
+        active: false,
         icon: 'album',
         method: () => {
           console.log('open');
         },
       },
-      {label: 'Show Ushop', value: '2', icon: 'ushop', method: () => ({})},
-      {label: 'Add clients', value: '3', icon: 'profile', method: () => ({})},
+      {
+        label: 'Show Ushop',
+        active: false,
+        value: '2',
+        icon: 'ushop',
+        method: () => ({}),
+      },
+      {
+        label: 'Add clients',
+        active: false,
+        value: '3',
+        icon: 'profile',
+        method: () => ({}),
+      },
       {
         label: 'Park Sale',
         value: '4',
         icon: 'retrievesale',
+        active: false,
         method: () => ({}),
       },
       {
         label: 'Retrieve Sale',
         value: '5',
         icon: 'retrievesale',
+        active: false,
         method: () => ({}),
       },
-      {label: 'Settings', value: '11', icon: 'settings', method: () => ({})},
+      {
+        label: 'Settings',
+        active: false,
+        value: '11',
+        icon: 'settings',
+        method: () => ({}),
+      },
     ],
     [],
   );
