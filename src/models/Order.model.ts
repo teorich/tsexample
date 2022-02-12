@@ -10,7 +10,7 @@ class Order extends Realm.Object {
   status!: string;
   customer!: string;
   details!: Array<string>;
-  transaction!: string;
+  transaction!: any;
   type!: string;
   profit!: number;
   amount!: number;
@@ -34,7 +34,7 @@ class Order extends Realm.Object {
       amount: 'double?',
       discount: 'double?',
       profit: 'double?',
-      metadata: 'string?',
+      metadata: 'mixed?',
       quantity: 'double?',
     },
   };
@@ -77,7 +77,7 @@ class Order extends Realm.Object {
       type: 'string',
       status: 'string',
       payment_instrument: 'PaymentInstrument',
-      metadata: 'string',
+      metadata: 'mixed?',
       created_at: 'date',
       updated_at: 'date',
       note: 'string',
@@ -95,13 +95,15 @@ class Order extends Realm.Object {
       register: 'Register',
       order_number: 'string',
       status: 'string',
-      customer: 'Person',
+      customer: 'Person?',
       details: 'OrderDetail[]',
-      transaction: 'Transaction',
+      transaction: 'Transaction?',
       type: 'string',
       profit: 'double',
       amount: 'double',
       taxe: 'double',
+      station: 'Station?',
+      metadata: 'mixed?',
       created_at: 'date',
       update_at: 'date?',
     },

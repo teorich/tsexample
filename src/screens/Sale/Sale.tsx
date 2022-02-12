@@ -95,7 +95,7 @@ const Sale: React.FC<SaleProps> = ({
       {
         label: 'Open register',
         value: '1',
-        active: false,
+        active: !currentRegisterSession,
         icon: 'album',
         method: () => {
           console.log('open');
@@ -110,10 +110,10 @@ const Sale: React.FC<SaleProps> = ({
       },
       {
         label: 'Add clients',
-        active: false,
+        active: !!data.length,
         value: '3',
         icon: 'profile',
-        method: () => ({}),
+        method: () => navigation.navigate('AddClient', {data}),
       },
       {
         label: 'Park Sale',
@@ -137,7 +137,7 @@ const Sale: React.FC<SaleProps> = ({
         method: () => ({}),
       },
     ],
-    [],
+    [currentRegisterSession, data],
   );
 
   useFocusEffect(

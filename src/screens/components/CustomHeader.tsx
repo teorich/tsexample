@@ -23,6 +23,16 @@ interface CustomHeaderProps {
   onSelect: (item: {label: string; value: string}) => void;
 }
 
+interface IRightMenu {
+  item: {
+    label: string;
+    value: string;
+    icon: string;
+    active: boolean;
+    method: () => {};
+  };
+}
+
 const CustomHeader: React.FunctionComponent<CustomHeaderProps> = ({
   navigation,
   isHome,
@@ -63,25 +73,29 @@ const CustomHeader: React.FunctionComponent<CustomHeaderProps> = ({
     visible ? setVisible(false) : openDropdown();
   };
 
-  const renderItem = ({item}: any): ReactElement<any, any> => (
-    <TouchableOpacity
-      onPress={() => {
-        item.method();
-        setVisible(false);
-      }}>
-      <View style={tw.style('text-gray-700 flex-row flex  text-sm')}>
-        <CustomIcon
-          name={item.icon}
-          size={22}
-          style={tw.style('my-2 pl-5')}
-          color={tw.color('dark')}
-        />
-        <Text style={tw.style('text-lg my-1 ml-4 mr-20 font-bold')}>
-          {item.label}
-        </Text>
-      </View>
-    </TouchableOpacity>
-  );
+  const renderItem = ({item}: IRightMenu): ReactElement<any, any> => {
+    return item.active ? (
+      <TouchableOpacity
+        onPress={() => {
+          item.method();
+          setVisible(false);
+        }}>
+        <View style={tw.style('text-gray-700 flex-row flex  text-sm')}>
+          <CustomIcon
+            name={item.icon}
+            size={22}
+            style={tw.style('my-2 pl-5')}
+            color={tw.color('dark')}
+          />
+          <Text style={tw.style('text-lg my-1 ml-4 mr-20 font-bold')}>
+            {item.label}
+          </Text>
+        </View>
+      </TouchableOpacity>
+    ) : (
+      <View />
+    );
+  };
 
   const renderDropdown = (): ReactElement<any, any> => {
     return (

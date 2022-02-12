@@ -32,6 +32,24 @@ class Agency extends Realm.Object {
     };
   }
 
+  public static StationModel: Realm.ObjectSchema = {
+    name: 'Station',
+    embedded: true, // default: false
+    properties: {
+      _id: 'objectId',
+      name: 'string',
+      code: 'string',
+      capacity: 'int',
+      metadata: 'mixed?',
+      shape: 'string',
+      stage: 'string',
+      created_at: 'date',
+      updated_at: 'date',
+      x: 'double',
+      y: 'double',
+    },
+  };
+
   // To use a class as a Realm object type, define the object schema on the static property "schema".
   public static schema: Realm.ObjectSchema = {
     name: 'Agency',
@@ -60,7 +78,7 @@ class Agency extends Realm.Object {
       paymentAccount: 'string[]',
       created_at: 'date',
       update_at: 'date?',
-      stations: 'string[]',
+      stations: 'Station[]',
       agents: 'Person[]',
       shopId: {
         type: 'linkingObjects',

@@ -13,6 +13,7 @@ import CustomHeader from '../../screens/components/CustomHeader';
 
 import tw from '../../../tailwind';
 import {useFocusEffect} from '@react-navigation/native';
+import ListAccordion from '../../screens/components/Accordion';
 
 interface AddClientProps {
   setIsSelected: any;
@@ -157,6 +158,9 @@ const AddClient: React.FC<AddClientProps> = ({navigation, route}) => {
           renderItem={renderProduct} //method to render the data in the way you want using styling u need
           horizontal={false}
         />
+      </View>
+      <View>
+        <ListAccordion />
       </View>
       <ScrollView style={tw.style('flex bg-white h-full')}>
         <View
