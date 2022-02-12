@@ -34,17 +34,17 @@ const LoginMode: React.FunctionComponent<LoginModeProps> = props => {
     <>
       <Text
         style={tw.style(
-          'text-2xl  flex-wrap text-center m-8 font-mulishBold',
+          'text-2xl  flex-wrap text-center m-8 ""Bold',
           'text-[#3E5066]',
         )}>
         {title}
       </Text>
 
-      <View style={tw.style('font-mulish')}>
+      <View style={tw.style('""')}>
         <View style={tw.style('m-3')}>
           <Text
             style={tw.style(
-              'text-base h-5 mb-5 leading-5  font-semibold font-mulish',
+              'text-base h-5 mb-5 leading-5  font-semibold ""',
             )}>
             Sélectionnez téléphone ou e-mail
           </Text>
@@ -57,7 +57,7 @@ const LoginMode: React.FunctionComponent<LoginModeProps> = props => {
             <View style={tw.style('mt-auto mb-auto pb-1')}>
               <View style={tw.style('ml-20')}>
                 <Text
-                  style={tw.style('text-base h-5 font-semibold font-mulish')}>
+                  style={tw.style('text-base h-5 font-semibold ""')}>
                   {isByPhone
                     ? 'Contactez-moi par téléphone'
                     : 'Contactez-moi par email'}
@@ -89,12 +89,12 @@ const LoginMode: React.FunctionComponent<LoginModeProps> = props => {
           <View style={tw.style('m-3')}>
             <Text
               style={tw.style(
-                'text-base h-5 mb-5 leading-5  font-semibold font-mulish',
+                'text-base h-5 mb-5 leading-5  font-semibold ""',
               )}>
               Entrez votre adresse email
             </Text>
             <TextInput
-              style={tw.style('bg-white rounded text-xl h-14 font-mulish')}
+              style={tw.style('bg-white rounded text-xl h-14 ""')}
               placeholder="myemail@domain.com"
               onChangeText={val => setFieldValue('email', val)}
             />
@@ -104,18 +104,18 @@ const LoginMode: React.FunctionComponent<LoginModeProps> = props => {
           <View style={tw.style('m-3')}>
             <Text
               style={tw.style(
-                'text-base h-5 mb-5 leading-5 font-semibold font-mulish',
+                'text-base h-5 mb-5 leading-5 font-semibold ""',
               )}>
               Taper le numéro de téléphone
             </Text>
             <PhoneInput
               containerStyle={tw.style(
-                'text-base w-full shadow-none bg-white rounded h-13 font-mulish',
+                'text-base w-full shadow-none bg-white rounded h-13 ""',
               )}
               textInputStyle={tw.style(
-                'text-xl w-full shadow-none bg-white rounded h-13 font-mulish',
+                'text-xl w-full shadow-none bg-white rounded h-13 ""',
               )}
-              textContainerStyle={tw.style('text-base  bg-white font-mulish')}
+              textContainerStyle={tw.style('text-base  bg-white ""')}
               ref={phoneInput}
               defaultValue={phoneValue}
               defaultCode="CM"

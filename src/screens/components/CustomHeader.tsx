@@ -7,6 +7,7 @@ import {
   View,
   FlatList,
   StyleSheet,
+  SafeAreaView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -119,6 +120,7 @@ const CustomHeader: React.FunctionComponent<CustomHeaderProps> = ({
   };
   return (
     <>
+    <SafeAreaView>
       <View style={tw.style('flex-row bg-white h-50px shadow-md relative')}>
         {isHome ? (
           <View style={tw.style('flex-1 justify-center')}>
@@ -162,6 +164,7 @@ const CustomHeader: React.FunctionComponent<CustomHeaderProps> = ({
         )}
         <View style={tw.style('top-72')}>{renderDropdown()}</View>
       </View>
+      </SafeAreaView>
     </>
   );
 };

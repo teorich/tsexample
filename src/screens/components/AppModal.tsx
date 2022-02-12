@@ -20,7 +20,7 @@ const AppModal: React.FunctionComponent<AppModalProps> = props => {
         deviceHeight={height}
         deviceWidth={width}
         isVisible={props.showModal}>
-        <View style={tw.style('bg-white font-mulishBold rounded')}>
+        <View style={tw.style('bg-white ""Bold rounded')}>
           {props.children}
         </View>
       </Modal>

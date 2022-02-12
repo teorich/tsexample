@@ -163,7 +163,7 @@ const Board: React.FunctionComponent<HomeProps> = ({navigation, route}) => {
 
   const [boardMenus] = useState(DATA);
   return (
-    <SafeAreaView style={tw.style('font-mulishBold flex-1', 'bg-[#F9F8FE]')}>
+    <SafeAreaView style={tw.style('', 'bg-[#F9F8FE]')}>
       <View style={tw.style('absolute')}>
         {showModal && (
           <AppModal
@@ -176,7 +176,7 @@ const Board: React.FunctionComponent<HomeProps> = ({navigation, route}) => {
       <FlatList
         data={boardMenus}
         renderItem={item => (
-          <View style={tw.style('font-mulishBold m-4')}>
+          <View style={tw.style('""Bold m-4')}>
             <OnboardingCard
               svgComponent={item.item.svgComponent}
               title={item.item.title}

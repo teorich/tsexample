@@ -90,7 +90,7 @@ const AddCategory: React.FunctionComponent<AddCategoryProps> = props => {
         <View style={tw.style('m-3')}>
           <Text
             style={tw.style(
-              'text-xs h-5 tracking-wider mb-3 leading-5 uppercase font-semibold font-mulish',
+              'text-xs h-5 tracking-wider mb-3 leading-5 uppercase font-semibold ""',
             )}>
             Nom de catégorie
           </Text>
@@ -98,14 +98,14 @@ const AddCategory: React.FunctionComponent<AddCategoryProps> = props => {
             onChangeText={setCategoryName}
             value={categoryName}
             style={tw.style(
-              ' rounded bg-[#FFFFFF] w-full text-4xl font-mulish border border-[#EDEEF0]',
+              ' rounded bg-[#FFFFFF] w-full text-4xl "" border border-[#EDEEF0]',
             )}
           />
         </View>
         <View style={tw.style('m-3')}>
           <Text
             style={tw.style(
-              'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
+              'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
             )}>
             description (facultatif)
           </Text>
@@ -117,7 +117,7 @@ const AddCategory: React.FunctionComponent<AddCategoryProps> = props => {
               multiline={true}
               numberOfLines={10}
               style={tw.style(
-                'text-4xl rounded bg-[#FFFFFF]  justify-start w-full h-137px font-mulish border border-[#EDEEF0]',
+                'text-4xl rounded bg-[#FFFFFF]  justify-start w-full h-137px "" border border-[#EDEEF0]',
                 {textAlignVertical: 'top'},
               )}
             />

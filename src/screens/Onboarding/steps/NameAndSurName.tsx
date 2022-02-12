@@ -11,30 +11,30 @@ interface NameAndSurNameProps {
 const NameAndSurName: React.FunctionComponent<NameAndSurNameProps> = props => {
   const {setFieldValue} = useFormikContext();
   return (
-    <View style={tw.style('mt-auto mb-auto font-mulish')}>
+    <View style={tw.style('mt-auto mb-auto ""')}>
       <View style={tw.style('m-3')}>
         <Text
           style={tw.style(
-            'text-base h-5 mb-5 leading-5  font-semibold font-mulish',
+            'text-base h-5 mb-5 leading-5  font-semibold ""',
           )}>
           Name
         </Text>
         <TextInput
           onChangeText={val => setFieldValue('first_name', val)}
-          style={tw.style('bg-white text-xl rounded w-full h-14 font-mulish')}
+          style={tw.style('bg-white text-xl rounded w-full h-14 ""')}
           placeholder="Enter your name"
         />
       </View>
       <View style={tw.style('m-3')}>
         <Text
           style={tw.style(
-            'text-base h-5 mb-5 leading-5  font-semibold font-mulish',
+            'text-base h-5 mb-5 leading-5  font-semibold ""',
           )}>
           Surname
         </Text>
         <TextInput
           onChangeText={val => setFieldValue('last_name', val)}
-          style={tw.style('bg-white rounded text-xl h-14 font-mulish')}
+          style={tw.style('bg-white rounded text-xl h-14 ""')}
           placeholder="Enter your surname"
         />
       </View>

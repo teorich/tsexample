@@ -23,13 +23,13 @@ const PrincipalInfo: React.FunctionComponent<PrincipalInfoProps> = props => {
       <View style={tw.style('m-3')}>
         <Text
           style={tw.style(
-            'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
+            'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
           )}>
           product name
         </Text>
         <TextInput
           style={tw.style(
-            ' text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
+            ' text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
           )}
         />
       </View>
@@ -37,7 +37,7 @@ const PrincipalInfo: React.FunctionComponent<PrincipalInfoProps> = props => {
       <View style={tw.style('m-3')}>
         <Text
           style={tw.style(
-            'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
+            'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
           )}>
           description
         </Text>
@@ -49,7 +49,7 @@ const PrincipalInfo: React.FunctionComponent<PrincipalInfoProps> = props => {
       <View style={tw.style('m-3')}>
         <Text
           style={tw.style(
-            'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
+            'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
           )}>
           description
         </Text>
@@ -59,7 +59,7 @@ const PrincipalInfo: React.FunctionComponent<PrincipalInfoProps> = props => {
             multiline={true}
             numberOfLines={10}
             style={tw.style(
-              ' text-xs rounded bg-[#FFFFFF]  justify-start w-full h-137px font-mulish border border-[#EDEEF0]',
+              ' text-xs rounded bg-[#FFFFFF]  justify-start w-full h-137px "" border border-[#EDEEF0]',
               {textAlignVertical: 'top'},
             )}
           />
@@ -68,13 +68,13 @@ const PrincipalInfo: React.FunctionComponent<PrincipalInfoProps> = props => {
       <View style={tw.style('m-3')}>
         <Text
           style={tw.style(
-            'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
+            'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
           )}>
           product name
         </Text>
         <TextInput
           style={tw.style(
-            ' text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
+            ' text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
           )}
         />
       </View>
@@ -82,7 +82,7 @@ const PrincipalInfo: React.FunctionComponent<PrincipalInfoProps> = props => {
       <View style={tw.style('m-3')}>
         <Text
           style={tw.style(
-            'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
+            'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
           )}>
           description
         </Text>

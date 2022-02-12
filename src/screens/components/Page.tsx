@@ -8,7 +8,7 @@ const Page = ({title, children}: any) => {
     <>
       <Text
         style={tw.style(
-          'text-2xl  flex-wrap text-center m-8 mt-10 font-mulishBold leading-7',
+          'text-2xl  flex-wrap text-center m-8 mt-10 ""Bold leading-7',
           'text-[#3E5066]',
         )}>
         {title}

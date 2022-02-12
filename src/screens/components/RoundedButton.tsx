@@ -11,7 +11,7 @@ const RoundedButton = ({label, onPress}: any) => {
       style={tw.style('text-2xl tracking-wide flex-row mb-1 text-blue')}>
       <Text
         style={tw.style(
-          'text-2xl font-mulish font-bold  tracking-wide text-blue',
+          'text-2xl "" font-bold  tracking-wide text-blue',
         )}>
         {label}
       </Text>

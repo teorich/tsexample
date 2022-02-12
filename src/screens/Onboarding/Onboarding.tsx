@@ -348,13 +348,13 @@ const OnboardingRegistration = ({navigation, route}: any) => {
   const modalContent = () => {
     return (
       <View
-        style={tw.style('bg-white font-mulishBold h-64 relative items-center')}>
+        style={tw.style('bg-white ""Bold h-64 relative items-center')}>
         <View style={tw.style('absolute top-8')}>
           <Text
-            style={tw.style('text-2xl font-mulishBold text-dark text-center')}>
+            style={tw.style('text-2xl ""Bold text-dark text-center')}>
             Félicitations, votre boutique a été créé avec success!
           </Text>
-          <Text style={tw.style(' font-mulishBold text-center')}>
+          <Text style={tw.style(' ""Bold text-center')}>
             Store url: {shopUrl}
           </Text>
         </View>
@@ -405,7 +405,7 @@ const OnboardingRegistration = ({navigation, route}: any) => {
                 />
               )}
             </View>
-            <SafeAreaView style={tw.style('flex-1 bg-[#F9F8FE] font-mulish')}>
+            <SafeAreaView style={tw.style('flex-1 bg-[#F9F8FE] ""')}>
               <KeyboardAvoidingView
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                 style={tw.style('flex-1')}>

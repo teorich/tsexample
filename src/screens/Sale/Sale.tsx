@@ -255,7 +255,7 @@ const Sale: React.FC<SaleProps> = ({
           <TextInput
             placeholder="Сhercher un produit par nom, code..."
             style={tw.style(
-              'rounded bg-[#FFFFFF] w-full text-lg font-mulish border border-[#EDEEF0]',
+              'rounded bg-[#FFFFFF] w-full text-lg "" border border-[#EDEEF0]',
             )}
           />
         </View>
@@ -290,7 +290,7 @@ const Sale: React.FC<SaleProps> = ({
                       value={openingRegisterAmount}
                       keyboardType="numeric"
                       style={tw.style(
-                        'rounded bg-[#FFFFFF] w-full text-2xl font-mulish border border-[#EDEEF0]',
+                        'rounded bg-[#FFFFFF] w-full text-2xl "" border border-[#EDEEF0]',
                       )}
                     />
                   </View>

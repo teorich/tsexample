@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable comma-dangle */
 import React, { useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Platform, Pressable, Text, View } from 'react-native';
 import { PERMISSIONS, request } from 'react-native-permissions';
 import Geolocation from 'react-native-geolocation-service';
 import Toast from 'react-native-toast-message';
@@ -29,7 +29,7 @@ const MapLocation: React.FunctionComponent<MapLocationProps> = props => {
 
   const getMyLocation = () => {
     try {
-      request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION).then(result => {
+      request(Platform.OS === 'ios' ?  PERMISSIONS.IOS.LOCATION_ALWAYS: PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION).then(result => {
         if (result === 'granted') {
           Geolocation.getCurrentPosition(
             position => {
@@ -79,14 +79,14 @@ const MapLocation: React.FunctionComponent<MapLocationProps> = props => {
           <UserLocationSvg />
           <Text
             style={tw.style(
-              'text-2xl  flex-wrap mt-4 text-center  font-mulishBold',
+              'text-2xl  flex-wrap mt-4 text-center  ""Bold',
               'text-[#3E5066]',
             )}>
             Choisissez vos Emplacement de Boutique
           </Text>
           <Text
             style={tw.style(
-              'mt-4 text-center text-bipgray leading-6 font-mulish',
+              'mt-4 text-center text-bipgray leading-6 ""',
             )}>
             Entrez 3 mots que nous pouvons utiliser pour localiser votre boutique (séparez les mots par une virgule ou Entrez)
           </Text>

@@ -44,7 +44,7 @@ const Map: React.FunctionComponent<MapProps> = () => {
       <View>
         <TextInput
           style={tw.style(
-            'bg-white text-base rounded absolute w-full h-14 font-mulish',
+            'bg-white text-base rounded absolute w-full h-14 ""',
           )}
           placeholder="Enter your name"
         />

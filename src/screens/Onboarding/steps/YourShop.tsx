@@ -16,20 +16,20 @@ const YourShop: React.FunctionComponent<YourShopProps> = props => {
       <View style={tw.style('m-3')}>
         <Text
           style={tw.style(
-            'text-base h-5 mb-5 leading-5  font-semibold font-mulish',
+            'text-base h-5 mb-5 leading-5  font-semibold ""',
           )}>
           Nom du Boutique
         </Text>
         <View
           style={tw.style(
-            'bg-white text-xl relative rounded w-full h-14 font-mulish',
+            'bg-white text-xl relative rounded w-full h-14 ""',
           )}>
           <TextInput
             onChangeText={val => {
               setFieldValue('shopName', val);
               setFieldValue('url', val + '.biptech.ai');
             }}
-            style={tw.style('text-xl font-mulish')}
+            style={tw.style('text-xl ""')}
             placeholder="Le nom de ta boutique"
             underlineColorAndroid="transparent"
           />
@@ -44,12 +44,12 @@ const YourShop: React.FunctionComponent<YourShopProps> = props => {
       <View style={tw.style('')}>
         <Text
           style={tw.style(
-            'text-base h-5 mb-5 leading-5  font-semibold font-mulish',
+            'text-base h-5 mb-5 leading-5  font-semibold ""',
           )}>
           Type de Boutique
         </Text>
         {/* <TextInput
-          style={tw.style('bg-white rounded text-base h-14 font-mulish')}
+          style={tw.style('bg-white rounded text-base h-14 ""')}
           placeholder="Choisissez une categorie"
         /> */}
         <DropdownComponent />
@@ -57,12 +57,12 @@ const YourShop: React.FunctionComponent<YourShopProps> = props => {
       <View style={tw.style('m-3')}>
         <Text
           style={tw.style(
-            'text-base h-5 mb-5 leading-5  font-semibold font-mulish',
+            'text-base h-5 mb-5 leading-5  font-semibold ""',
           )}>
           Nombre d'emplacements
         </Text>
         {/* <TextInput
-          style={tw.style('bg-white rounded text-base h-14 font-mulish')}
+          style={tw.style('bg-white rounded text-base h-14 ""')}
           placeholder="Choisissez d'emplacements"
         /> */}
         <DropdownComponent />
@@ -70,12 +70,12 @@ const YourShop: React.FunctionComponent<YourShopProps> = props => {
       <View style={tw.style('m-3')}>
         <Text
           style={tw.style(
-            'text-base h-5 mb-5 leading-5  font-semibold font-mulish',
+            'text-base h-5 mb-5 leading-5  font-semibold ""',
           )}>
           Chiffre d'affaires annuel estimé
         </Text>
         {/* <TextInput
-          style={tw.style('bg-white rounded text-base h-14 font-mulish')}
+          style={tw.style('bg-white rounded text-base h-14 ""')}
           placeholder="Choisissez une gamme de chiffre"
         /> */}
         <DropdownComponent />

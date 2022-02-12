@@ -15,7 +15,7 @@ const Email: React.FunctionComponent<EmailProps> = props => {
         <View style={tw.style('items-center mb-60 mx-7')}>
           <Text
             style={tw.style(
-              'mt-7 text-center text-dark leading-6 font-mulishBold text-base',
+              'mt-7 text-center text-dark leading-6 text-base',
             )}>
             Confirm your email address
           </Text>
@@ -27,12 +27,12 @@ const Email: React.FunctionComponent<EmailProps> = props => {
           </Text>
           <Text
             style={tw.style(
-              'mt-4 text-center text-bipgray leading-6 font-mulish',
+              'mt-4 text-center text-bipgray leading-6',
             )}>
             Check your email and click on the confirmation link to validate your
             email address
           </Text>
-          <Text style={tw.style('mt-7 text-accent font-mulishBold')}>
+          <Text style={tw.style('mt-7 text-accent')}>
             Resend Email
           </Text>
         </View>
