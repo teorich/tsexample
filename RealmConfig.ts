@@ -41,6 +41,7 @@ const getRealmSchemas = [
   Shop.ProductCategoryModel,
   Shop.schema,
   Agency.schema,
+  Agency.StationModel,
   RegisterSessions.schema,
   RegisterSessions.NoteModel,
   Order.BankCardModel,

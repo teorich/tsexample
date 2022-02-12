@@ -103,7 +103,7 @@ const Sale: React.FC<SaleProps> = ({
       },
       {
         label: 'Show Ushop',
-        active: false,
+        active: true,
         value: '2',
         icon: 'ushop',
         method: () => ({}),
@@ -119,25 +119,25 @@ const Sale: React.FC<SaleProps> = ({
         label: 'Park Sale',
         value: '4',
         icon: 'retrievesale',
-        active: false,
+        active: true,
         method: () => ({}),
       },
       {
         label: 'Retrieve Sale',
         value: '5',
         icon: 'retrievesale',
-        active: false,
+        active: true,
         method: () => ({}),
       },
       {
         label: 'Settings',
-        active: false,
+        active: true,
         value: '11',
         icon: 'settings',
         method: () => ({}),
       },
     ],
-    [currentRegisterSession, data],
+    [currentRegisterSession, data, navigation],
   );
 
   useFocusEffect(
