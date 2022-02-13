@@ -162,6 +162,7 @@ const Sale: React.FC<SaleProps> = ({
     //   const [flexWrap, setFlexWrap] = useState('wrap');
 
     const OnCheckChange = checkItem => {
+      if(currentRegisterSession) {
       const arr = [...data];
       const item = arr.findIndex(item => item._id === checkItem._id);
       if (item > -1) {
@@ -170,6 +171,8 @@ const Sale: React.FC<SaleProps> = ({
         // can use a callback to update parent from here
       } else {
         setData((prev: any) => [...prev, checkItem]);
+      }} else {
+        console.log("No register open")
       }
     };
 
@@ -290,7 +293,7 @@ const Sale: React.FC<SaleProps> = ({
                       value={openingRegisterAmount}
                       keyboardType="numeric"
                       style={tw.style(
-                        'rounded bg-[#FFFFFF] w-full text-2xl "" border border-[#EDEEF0]',
+                        'rounded bg-[#FFFFFF] w-full text-2xl border border-[#EDEEF0]',
                       )}
                     />
                   </View>
@@ -332,7 +335,7 @@ const Sale: React.FC<SaleProps> = ({
           <Pressable
             onPress={() => navigation.navigate('AddClient', {data})}
             style={tw.style(
-              'absolute border border-[#EDEEF0] items-center w-full h-50px bg-[#EDEEF0] bottom-0',
+              'absolute border border-[#EDEEF0] items-center w-full h-50px bg-[#EDEEF0] bottom-2 mb-2',
             )}>
             <Text
               style={tw.style(

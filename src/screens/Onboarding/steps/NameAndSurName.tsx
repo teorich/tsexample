@@ -15,7 +15,7 @@ const NameAndSurName: React.FunctionComponent<NameAndSurNameProps> = props => {
       <View style={tw.style('m-3')}>
         <Text
           style={tw.style(
-            'text-base h-5 mb-5 leading-5  font-semibold ""',
+            'text-base h-5 mb-5 leading-5 font-mulishBold',
           )}>
           Name
         </Text>
@@ -28,7 +28,7 @@ const NameAndSurName: React.FunctionComponent<NameAndSurNameProps> = props => {
       <View style={tw.style('m-3')}>
         <Text
           style={tw.style(
-            'text-base h-5 mb-5 leading-5  font-semibold ""',
+            'text-base h-5 mb-5 leading-5 font-mulishBold',
           )}>
           Surname
         </Text>

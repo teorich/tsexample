@@ -7,6 +7,7 @@ import { ActivityIndicator, StatusBar, StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 // import RNBootSplash from 'react-native-bootsplash';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Toast from 'react-native-toast-message';
@@ -82,6 +83,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
+        <SafeAreaProvider>
         <NavigationContainer>
           <StatusBar backgroundColor="#01b6eb" />
           <Stack.Navigator
@@ -112,6 +114,7 @@ const App = () => {
           </Stack.Navigator>
           <Toast />
         </NavigationContainer>
+        </SafeAreaProvider>
       </PersistGate>
     </Provider>
   );

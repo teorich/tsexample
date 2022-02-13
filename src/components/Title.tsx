@@ -19,7 +19,7 @@ const Title = (props: Props) => {
       )}>
       <Text
         style={tw.style(
-          'text-lg  tracking-wide text-center p-2 ""Bold items-center mx-10',
+          'text-lg  tracking-wide text-center p-2 Bold items-center mx-10',
           `${props.textColor}`,
         )}>
         {props.text}

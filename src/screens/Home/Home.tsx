@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {
   View,
-  SafeAreaView,
   FlatList,
   Text,
   StatusBar,
   Pressable,
 } from 'react-native';
+import {  SafeAreaView } from 'react-native-safe-area-context'
 import {createStackNavigator} from '@react-navigation/stack';
 import {
   BottomTabBar,
@@ -331,7 +331,7 @@ function TabNavigator() {
           : undefined,
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarStyle: tw.style('h-50px items-center'),
+        tabBarStyle: tw.style(' items-center'),
         tabBarIcon: ({focused, color, size}) => {
           let iconName: string;
 
