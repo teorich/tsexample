@@ -59,7 +59,7 @@ const radioButtonsData = [
     value: 'standard',
     size: 18,
     color: '#01b6eb',
-    labelStyle: tw.style('text-dark text-xs font-normal "" w-165px'),
+    labelStyle: tw.style('text-dark text-xs font-normal font-mulish w-165px'),
     selected: false,
   },
   {
@@ -68,7 +68,7 @@ const radioButtonsData = [
     value: 'variant',
     size: 18,
     color: '#01b6eb',
-    labelStyle: tw.style('text-dark text-xs font-normal "" w-165px'),
+    labelStyle: tw.style('text-dark text-xs font-normal font-mulish w-165px'),
     selected: false,
   },
   {
@@ -77,7 +77,7 @@ const radioButtonsData = [
     value: 'composite',
     size: 18,
     color: '#01b6eb',
-    labelStyle: tw.style('text-dark text-xs font-normal "" w-165px'),
+    labelStyle: tw.style('text-dark text-xs font-normal font-mulish w-165px'),
     selected: false,
   },
 ];
@@ -222,7 +222,7 @@ const CreateProduct: React.FunctionComponent<CreateProductsProps> = ({
                   <View>
                     <Text
                       style={tw.style(
-                        'font-medium m-auto text-dark "" uppercase',
+                        'font-medium m-auto text-dark font-mulish uppercase',
                       )}>
                       TYPE DE produit
                     </Text>
@@ -298,7 +298,7 @@ const CreateProduct: React.FunctionComponent<CreateProductsProps> = ({
                 <View style={tw.style('m-3')}>
                   <Text
                     style={tw.style(
-                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
+                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
                     )}>
                     product name
                   </Text>
@@ -307,7 +307,7 @@ const CreateProduct: React.FunctionComponent<CreateProductsProps> = ({
                     onBlur={formik.handleBlur('name')}
                     value={formik.values.name}
                     style={tw.style(
-                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
+                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
                     )}
                   />
                 </View>
@@ -315,7 +315,7 @@ const CreateProduct: React.FunctionComponent<CreateProductsProps> = ({
                 <View style={tw.style('m-3')}>
                   <Text
                     style={tw.style(
-                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
+                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
                     )}>
                     sku
                   </Text>
@@ -324,7 +324,7 @@ const CreateProduct: React.FunctionComponent<CreateProductsProps> = ({
                     onBlur={formik.handleBlur('sku')}
                     value={formik.values.sku}
                     style={tw.style(
-                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
+                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
                     )}
                   />
                 </View>
@@ -332,13 +332,13 @@ const CreateProduct: React.FunctionComponent<CreateProductsProps> = ({
                 <View style={tw.style('m-3')}>
                   <Text
                     style={tw.style(
-                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
+                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
                     )}>
                     code fournisseur
                   </Text>
                   <TextInput
                     style={tw.style(
-                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
+                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
                     )}
                   />
                 </View>
@@ -346,13 +346,13 @@ const CreateProduct: React.FunctionComponent<CreateProductsProps> = ({
                 <View style={tw.style('m-3')}>
                   <Text
                     style={tw.style(
-                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
+                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
                     )}>
                     custom field
                   </Text>
                   <TextInput
                     style={tw.style(
-                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
+                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
                     )}
                   />
                 </View>
@@ -360,7 +360,7 @@ const CreateProduct: React.FunctionComponent<CreateProductsProps> = ({
                 <View style={tw.style('m-3')}>
                   <Text
                     style={tw.style(
-                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
+                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
                     )}>
                     description
                   </Text>
@@ -373,7 +373,7 @@ const CreateProduct: React.FunctionComponent<CreateProductsProps> = ({
                       multiline={true}
                       numberOfLines={10}
                       style={tw.style(
-                        ' text-xs rounded bg-[#FFFFFF]  justify-start w-full h-137px "" border border-[#EDEEF0]',
+                        ' text-xs rounded bg-[#FFFFFF]  justify-start w-full h-137px font-mulish border border-[#EDEEF0]',
                         {textAlignVertical: 'top'},
                       )}
                     />
@@ -497,78 +497,78 @@ const CreateProduct: React.FunctionComponent<CreateProductsProps> = ({
                 <View style={tw.style('m-3')}>
                   <Text
                     style={tw.style(
-                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
+                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
                     )}>
                     catégories du produit
                   </Text>
                   <TextInput
                     style={tw.style(
-                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
+                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
                     )}
                   />
                 </View>
                 <View style={tw.style('m-3')}>
                   <Text
                     style={tw.style(
-                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
+                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
                     )}>
                     fournisseur
                   </Text>
                   <TextInput
                     style={tw.style(
-                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
+                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
                     )}
                   />
                 </View>
                 <View style={tw.style('m-3')}>
                   <Text
                     style={tw.style(
-                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
+                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
                     )}>
                     marque
                   </Text>
                   <TextInput
                     style={tw.style(
-                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
+                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
                     )}
                   />
                 </View>
                 <View style={tw.style('m-3')}>
                   <Text
                     style={tw.style(
-                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
+                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
                     )}>
                     label
                   </Text>
                   <TextInput
                     style={tw.style(
-                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
+                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
                     )}
                   />
                 </View>
                 <View style={tw.style('m-3')}>
                   <Text
                     style={tw.style(
-                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
+                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
                     )}>
                     saison
                   </Text>
                   <TextInput
                     style={tw.style(
-                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
+                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
                     )}
                   />
                 </View>
                 <View style={tw.style('m-3')}>
                   <Text
                     style={tw.style(
-                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
+                      'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
                     )}>
                     additional loayalty ponts
                   </Text>
                   <TextInput
                     style={tw.style(
-                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
+                      ' text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
                     )}
                   />
                 </View>

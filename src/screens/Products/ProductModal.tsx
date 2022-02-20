@@ -21,7 +21,7 @@ const ProductModal: React.FunctionComponent<ProductModalProps> = props => {
     //   renderItem={item => (
     //     <Pressable
     //       style={tw.style(
-    //         '""Bold border border-2 m-1 rounded-t-md',
+    //         'font-mulishBold border border-2 m-1 rounded-t-md',
     //         'border-[#E5E9F2]',
     //       )}>
     //       <View style={tw.style('items-center mt-3 bg-[#FCFDFF]')}>
@@ -29,15 +29,15 @@ const ProductModal: React.FunctionComponent<ProductModalProps> = props => {
     //       </View>
     //       <View
     //         style={tw.style(
-    //           '""Bold items-center p-4 m-auto mt-5 mb-5 rounded-t-md w-full',
+    //           'font-mulishBold items-center p-4 m-auto mt-5 mb-5 rounded-t-md w-full',
     //         )}>
     //         <Text
     //           style={tw.style(
-    //             'font-bold text-sm leading-5 "" text-dark',
+    //             'font-bold text-sm leading-5 font-mulish text-dark',
     //           )}>
     //           Standard Product
     //         </Text>
-    //         <Text style={tw.style(' font-semibold mt-1 ""')}>
+    //         <Text style={tw.style(' font-semibold mt-1 font-mulish')}>
     //           A single SKU with it’s own inventory
     //         </Text>
     //       </View>
@@ -56,7 +56,7 @@ const ProductModal: React.FunctionComponent<ProductModalProps> = props => {
           });
         }}
         style={tw.style(
-          '""Bold border border-2 m-4 rounded-t-md',
+          'font-mulishBold border border-2 m-4 rounded-t-md',
           'border-[#E5E9F2]',
         )}>
         <View style={tw.style('items-center mt-3 bg-[#FCFDFF]')}>
@@ -64,15 +64,15 @@ const ProductModal: React.FunctionComponent<ProductModalProps> = props => {
         </View>
         <View
           style={tw.style(
-            '""Bold items-center p-4 m-auto mt-5 mb-5 rounded-t-md w-full',
+            'font-mulishBold items-center p-4 m-auto mt-5 mb-5 rounded-t-md w-full',
           )}>
           <Text
             style={tw.style(
-              'font-bold text-sm leading-5 "" text-dark',
+              'font-bold text-sm leading-5 font-mulish text-dark',
             )}>
             Standard Product
           </Text>
-          <Text style={tw.style(' font-semibold mt-1 ""')}>
+          <Text style={tw.style(' font-semibold mt-1 font-mulish')}>
             A single SKU with it’s own inventory
           </Text>
         </View>
@@ -86,7 +86,7 @@ const ProductModal: React.FunctionComponent<ProductModalProps> = props => {
           });
         }}
         style={tw.style(
-          '""Bold border border-2 m-4 rounded-t-md',
+          'font-mulishBold border border-2 m-4 rounded-t-md',
           'border-[#E5E9F2]',
         )}>
         <View style={tw.style('items-center mt-3 bg-[#FCFDFF]')}>
@@ -94,15 +94,15 @@ const ProductModal: React.FunctionComponent<ProductModalProps> = props => {
         </View>
         <View
           style={tw.style(
-            '""Bold items-center p-4 m-auto mt-5 mb-5 rounded-t-md w-full',
+            'font-mulishBold items-center p-4 m-auto mt-5 mb-5 rounded-t-md w-full',
           )}>
           <Text
             style={tw.style(
-              'font-bold text-sm leading-5 "" text-dark',
+              'font-bold text-sm leading-5 font-mulish text-dark',
             )}>
             Variant Product
           </Text>
-          <Text style={tw.style(' font-semibold mt-1 ""')}>
+          <Text style={tw.style(' font-semibold mt-1 font-mulish')}>
             A group of similar products with different attributes
           </Text>
         </View>
@@ -116,7 +116,7 @@ const ProductModal: React.FunctionComponent<ProductModalProps> = props => {
           });
         }}
         style={tw.style(
-          '""Bold border border-2 m-4 rounded-t-md',
+          'font-mulishBold border border-2 m-4 rounded-t-md',
           'border-[#E5E9F2]',
         )}>
         <View style={tw.style('items-center mt-3 bg-[#FCFDFF]')}>
@@ -124,15 +124,15 @@ const ProductModal: React.FunctionComponent<ProductModalProps> = props => {
         </View>
         <View
           style={tw.style(
-            '""Bold items-center p-4 m-auto mt-5 mb-5 rounded-t-md w-full',
+            'font-mulishBold items-center p-4 m-auto mt-5 mb-5 rounded-t-md w-full',
           )}>
           <Text
             style={tw.style(
-              'font-bold text-sm leading-5 "" text-dark',
+              'font-bold text-sm leading-5 font-mulish text-dark',
             )}>
             Composite Product
           </Text>
-          <Text style={tw.style(' font-semibold mt-1 ""')}>
+          <Text style={tw.style(' font-semibold mt-1 font-mulish')}>
             Specified quantity of one or two products
           </Text>
         </View>

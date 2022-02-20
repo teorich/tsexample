@@ -1,5 +1,5 @@
-import React from 'react';
-import {Pressable, useWindowDimensions, View} from 'react-native';
+import React, { useState } from 'react';
+import { Pressable, Text, useWindowDimensions, View } from 'react-native';
 import Modal from 'react-native-modal';
 
 import Close from '../../assets/images/close.svg';
@@ -13,14 +13,20 @@ interface AppModalProps {
 }
 
 const AppModal: React.FunctionComponent<AppModalProps> = props => {
-  const {height, width} = useWindowDimensions();
+  const { height, width } = useWindowDimensions();
+
   return (
-    <View style={tw.style(' rounded')}>
+    <View style={tw.style('rounded')}>
       <Modal
         deviceHeight={height}
         deviceWidth={width}
         isVisible={props.showModal}>
-        <View style={tw.style('bg-white ""Bold rounded')}>
+        <View>
+          <Pressable style={tw.style("rounded-full my-2 left-80 bg-white w-28px h-28px")} onPress={() => props.closeModal()}>
+            <Close />
+          </Pressable>
+        </View>
+        <View style={tw.style('bg-transparent font-mulishBold rounded')}>
           {props.children}
         </View>
       </Modal>
@@ -30,11 +36,11 @@ const AppModal: React.FunctionComponent<AppModalProps> = props => {
 
 // customBackdrop={
 //   <View style={tw.style('flex-1 bg-black')}>
-//     <View>
-//       <Pressable onPress={() => props.closeModal()}>
-//         <Close />
-//       </Pressable>
-//     </View>
+// <View>
+//   <Pressable onPress={() => props.closeModal()}>
+//     <Close />
+//   </Pressable>
+// </View>
 //   </View>
 // }
 

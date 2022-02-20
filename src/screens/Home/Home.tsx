@@ -44,6 +44,7 @@ import Products from '../Products/Products';
 import {useShops} from '../../providers/ShopProvider';
 import Sale from '../Sale/Sale';
 import AddClient from '../Sale/AddClient';
+import { MenuProvider } from 'react-native-popup-menu';
 
 interface HomeProps {
   title?: string;
@@ -176,7 +177,7 @@ const Board: React.FunctionComponent<HomeProps> = ({navigation, route}) => {
       <FlatList
         data={boardMenus}
         renderItem={item => (
-          <View style={tw.style('""Bold m-4')}>
+          <View style={tw.style('font-mulishBold m-4')}>
             <OnboardingCard
               svgComponent={item.item.svgComponent}
               title={item.item.title}
@@ -255,24 +256,28 @@ function SellStack({navigation}) {
       <Stack.Screen name="Sale">
         {props => {
           return (
+            
             <Sale
               isHome={false}
               {...props}
               setIsSelected={setIsSelected}
               isSelected={isSelected}
             />
+           
           );
         }}
       </Stack.Screen>
       <Stack.Screen name="AddClient">
         {props => {
           return (
+            <MenuProvider>
             <AddClient
               isHome={false}
               {...props}
               setIsSelected={setIsSelected}
               isSelected={isSelected}
             />
+            </MenuProvider>
           );
         }}
       </Stack.Screen>

@@ -29,17 +29,17 @@ const CreateShop: React.FunctionComponent<CreateShopProps> = props => {
         )}
         {!props.isByPhone && (
           <View>
-            <View style={tw.style('""')}>
+            <View style={tw.style('font-mulish')}>
               <View style={tw.style('m-3')}>
                 <Text
                   style={tw.style(
-                    'text-base h-5 mb-5 leading-5  font-semibold ""',
+                    'text-base h-5 mb-5 leading-5  font-semibold font-mulish',
                   )}>
                   Password
                 </Text>
                 <TextInput
                   style={tw.style(
-                    'bg-white text-base rounded  h-14 ""',
+                    'bg-white text-base rounded  h-14 font-mulish',
                   )}
                   placeholder="Enter password"
                 />
@@ -47,13 +47,13 @@ const CreateShop: React.FunctionComponent<CreateShopProps> = props => {
               <View style={tw.style('m-3')}>
                 <Text
                   style={tw.style(
-                    'text-base h-5 mb-5 leading-5  font-semibold ""',
+                    'text-base h-5 mb-5 leading-5  font-semibold font-mulish',
                   )}>
                   Password
                 </Text>
                 <TextInput
                   style={tw.style(
-                    'bg-white rounded text-base h-14 ""',
+                    'bg-white rounded text-base h-14 font-mulish',
                   )}
                   placeholder="Confirm password"
                 />

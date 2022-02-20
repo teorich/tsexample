@@ -79,14 +79,14 @@ const MapLocation: React.FunctionComponent<MapLocationProps> = props => {
           <UserLocationSvg />
           <Text
             style={tw.style(
-              'text-2xl  flex-wrap mt-4 text-center  ""Bold',
+              'text-2xl  flex-wrap mt-4 text-center  font-mulishBold',
               'text-[#3E5066]',
             )}>
             Choisissez vos Emplacement de Boutique
           </Text>
           <Text
             style={tw.style(
-              'mt-4 text-center text-bipgray leading-6 ""',
+              'mt-4 text-center text-bipgray leading-6 font-mulish',
             )}>
             Entrez 3 mots que nous pouvons utiliser pour localiser votre boutique (séparez les mots par une virgule ou Entrez)
           </Text>

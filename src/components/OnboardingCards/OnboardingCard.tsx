@@ -13,10 +13,10 @@ interface OnboardingCardProps {
 
 const OnboardingCard: React.FunctionComponent<OnboardingCardProps> = props => {
   return (
-    <View style={tw.style('""Bold')}>
+    <View style={tw.style('font-mulishBold')}>
       <View
         style={tw.style(
-          '""Bold border border-2 w-full rounded-t-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden',
+          'font-mulishBold border border-2 w-full rounded-t-md focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden',
           'border-[#E5E9F2]',
         )}>
         <View
@@ -26,14 +26,14 @@ const OnboardingCard: React.FunctionComponent<OnboardingCardProps> = props => {
           )}>
           {props.svgComponent()}
         </View>
-        <View style={tw.style('""Bold p-4 rounded-t-md w-full')}>
+        <View style={tw.style('font-mulishBold p-4 rounded-t-md w-full')}>
           <Text
             style={tw.style(
-              'text-justify font-bold text-base leading-6 ""Bold',
+              'text-justify font-bold text-base leading-6 font-mulishBold',
             )}>
             {props.title}
           </Text>
-          <Text style={tw.style('text-justify w-64 font-semibold ""')}>
+          <Text style={tw.style('text-justify w-64 font-semibold font-mulish')}>
             {props.subtitle}
           </Text>
           <Pressable

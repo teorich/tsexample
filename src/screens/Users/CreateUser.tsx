@@ -122,7 +122,7 @@ const CreateUser: React.FunctionComponent<any> = ({
                   <View style={tw.style('m-3')}>
                     <Text
                       style={tw.style(
-                        'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
+                        'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
                       )}>
                       First Name
                     </Text>
@@ -131,14 +131,14 @@ const CreateUser: React.FunctionComponent<any> = ({
                       onBlur={formik.handleBlur('firstName')}
                       value={formik.values.firstName}
                       style={tw.style(
-                        'text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
+                        'text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
                       )}
                     />
                   </View>
                   <View style={tw.style('m-3')}>
                     <Text
                       style={tw.style(
-                        'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
+                        'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
                       )}>
                       Last Name
                     </Text>
@@ -147,40 +147,40 @@ const CreateUser: React.FunctionComponent<any> = ({
                       onBlur={formik.handleBlur('lastName')}
                       value={formik.values.lastName}
                       style={tw.style(
-                        ' text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
+                        ' text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
                       )}
                     />
                   </View>
                   <View style={tw.style('m-3')}>
                     <Text
                       style={tw.style(
-                        'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold ""',
+                        'text-xs h-5 mb-3 tracking-wider leading-5 uppercase font-semibold font-mulish',
                       )}>
                       Phone number
                     </Text>
                     <TextInput
                       style={tw.style(
-                        ' text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
+                        ' text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
                       )}
                     />
                   </View>
                   <View style={tw.style('m-3')}>
                     <Text
                       style={tw.style(
-                        'text-xs h-5 tracking-wider mb-3 leading-5 uppercase font-semibold ""',
+                        'text-xs h-5 tracking-wider mb-3 leading-5 uppercase font-semibold font-mulish',
                       )}>
                       display name
                     </Text>
                     <TextInput
                       style={tw.style(
-                        ' text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
+                        ' text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
                       )}
                     />
                   </View>
                   <View style={tw.style('m-3')}>
                     <Text
                       style={tw.style(
-                        'text-xs h-5 tracking-wider mb-3 leading-5 uppercase font-semibold ""',
+                        'text-xs h-5 tracking-wider mb-3 leading-5 uppercase font-semibold font-mulish',
                       )}>
                       email
                     </Text>
@@ -189,7 +189,7 @@ const CreateUser: React.FunctionComponent<any> = ({
                       onBlur={formik.handleBlur('email')}
                       value={formik.values.email}
                       style={tw.style(
-                        ' text-xs rounded bg-[#FFFFFF] w-full h-14 "" border border-[#EDEEF0]',
+                        ' text-xs rounded bg-[#FFFFFF] w-full h-14 font-mulish border border-[#EDEEF0]',
                       )}
                     />
                   </View>

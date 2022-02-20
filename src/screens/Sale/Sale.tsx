@@ -1,4 +1,5 @@
 import {
+  Alert,
   FlatList,
   ImageBackground,
   Pressable,
@@ -6,23 +7,27 @@ import {
   ScrollView,
   Text,
   TextInput,
+  ToastAndroid,
   TouchableOpacity,
   useWindowDimensions,
   View,
 } from 'react-native';
-import React, {useEffect, useMemo, useState} from 'react';
-import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import {useFocusEffect} from '@react-navigation/native';
+
+
+import React, { useEffect, useMemo, useState } from 'react';
+import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
+import { useFocusEffect } from '@react-navigation/native';
+import Toast from 'react-native-simple-toast';
 import CustomHeader from '../../screens/components/CustomHeader';
 import CheckList from '../components/CheckList';
-import {useTopBarMenu} from '../../providers/TopBarMenuProvider';
+import { useTopBarMenu } from '../../providers/TopBarMenuProvider';
 import Tick from '../../assets/images/Tick.svg';
-import {useRegisterSession} from '../../providers/RegisterSession.provider';
-import {setRegisterSession} from '../../store/registerSession';
+import { useRegisterSession } from '../../providers/RegisterSession.provider';
+import { setRegisterSession } from '../../store/registerSession';
 
 import tw from '../../../tailwind';
-import {useReduxDispatch, useReduxSelector} from '../../store';
-import {useShops} from '../../providers/ShopProvider';
+import { useReduxDispatch, useReduxSelector } from '../../store';
+import { useShops } from '../../providers/ShopProvider';
 
 const getCircularReplacer = () => {
   const seen = new WeakSet();
@@ -38,9 +43,9 @@ const getCircularReplacer = () => {
 };
 
 const items = [
-  {id: '1', name: 'Pick n Pay', code: '#1abc9c', isChecked: false},
-  {id: '2', name: 'EMERALD', code: '#2ecc71', isChecked: false},
-  {id: '3', name: 'Pick n Pay', code: '#1abc9c', isChecked: false},
+  { id: '1', name: 'Pick n Pay', code: '#1abc9c', isChecked: false },
+  { id: '2', name: 'EMERALD', code: '#2ecc71', isChecked: false },
+  { id: '3', name: 'Pick n Pay', code: '#1abc9c', isChecked: false },
 ];
 
 type SaleProps = {
@@ -75,15 +80,15 @@ const Sale: React.FC<SaleProps> = ({
   const [index, setIndex] = React.useState(0);
   const layout = useWindowDimensions();
   const [routes] = React.useState([
-    {key: 'first', title: 'REGULAR PRODUCTS'},
-    {key: 'second', title: 'UNIVERSAL SHOP'},
+    { key: 'first', title: 'REGULAR PRODUCTS' },
+    { key: 'second', title: 'UNIVERSAL SHOP' },
   ]);
   const [data, setData] = useState<any>([]);
-  const {setMenu} = useTopBarMenu();
-  const {handleOpenRegisterSession, currentRegisterSession} =
+  const { setMenu } = useTopBarMenu();
+  const { handleOpenRegisterSession, currentRegisterSession } =
     useRegisterSession();
 
-  const {selectedShop} = useShops();
+  const { selectedShop } = useShops();
 
   const selectedRegisterSession = useReduxSelector(
     state => state.registerSession,
@@ -98,7 +103,16 @@ const Sale: React.FC<SaleProps> = ({
         active: !currentRegisterSession,
         icon: 'album',
         method: () => {
-          console.log('open');
+          setShowRegisterInput(true)
+        },
+      },
+      {
+        label: 'close register',
+        value: '1',
+        active: !!currentRegisterSession,
+        icon: 'album',
+        method: () => {
+          console.log("close register")
         },
       },
       {
@@ -113,7 +127,7 @@ const Sale: React.FC<SaleProps> = ({
         active: !!data.length,
         value: '3',
         icon: 'profile',
-        method: () => navigation.navigate('AddClient', {data}),
+        method: () => navigation.navigate('AddClient', { data }),
       },
       {
         label: 'Park Sale',
@@ -162,21 +176,24 @@ const Sale: React.FC<SaleProps> = ({
     //   const [flexWrap, setFlexWrap] = useState('wrap');
 
     const OnCheckChange = checkItem => {
-      if(currentRegisterSession) {
-      const arr = [...data];
-      const item = arr.findIndex(item => item._id === checkItem._id);
-      if (item > -1) {
-        arr.splice(item, 1);
-        setData(arr);
-        // can use a callback to update parent from here
+      if (currentRegisterSession) {
+        const arr = [...data];
+        const item = arr.findIndex(item => item._id === checkItem._id);
+        if (item > -1) {
+          arr.splice(item, 1);
+          setData(arr);
+          // can use a callback to update parent from here
+        } else {
+          setData((prev: any) => [...prev, checkItem]);
+        }
       } else {
-        setData((prev: any) => [...prev, checkItem]);
-      }} else {
         console.log("No register open")
+        // ToastAndroid.show('No register open!', ToastAndroid.SHORT);
+        Toast.show('This is a toast.');
       }
     };
 
-    const renderItem = ({item}) => (
+    const renderItem = ({ item }) => (
       <Pressable
         onPress={() => OnCheckChange(item)}
         style={tw.style('w-150px h-full  mx-3 mb-3 px-3 py-3 rounded')}>
@@ -239,7 +256,7 @@ const Sale: React.FC<SaleProps> = ({
         } catch (error) {
           console.log(error);
         }
-      }
+      } else {setShowRegisterInput(false);}
     } else {
       setShowRegisterInput(true);
     }
@@ -252,13 +269,13 @@ const Sale: React.FC<SaleProps> = ({
           navigation={navigation}
           isHome={true}
           route={route}
-          onSelect={() => {}}
+          onSelect={() => { }}
         />
         <View style={tw.style('m-5')}>
           <TextInput
             placeholder="Сhercher un produit par nom, code..."
             style={tw.style(
-              'rounded bg-[#FFFFFF] w-full text-lg "" border border-[#EDEEF0]',
+              'rounded bg-[#FFFFFF] w-full text-lg font-mulish border border-[#EDEEF0]',
             )}
           />
         </View>
@@ -272,7 +289,7 @@ const Sale: React.FC<SaleProps> = ({
                       style={tw.style(
                         'text-white text-sm ml-5 leading-5 tracking-wide',
                       )}>
-                      SAISIR LE MONTANT A L’OUVERTURE
+                      {!openingRegisterAmount ? "SAISIR LE MONTANT A L’OUVERTURE" : "Opening float"}
                     </Text>
                   </View>
                 ) : (
@@ -287,16 +304,19 @@ const Sale: React.FC<SaleProps> = ({
                 )}
 
                 {showRegisterInput && (
-                  <View style={tw.style('m-5')}>
-                    <TextInput
-                      onChangeText={setOpeningRegisterAmount}
-                      value={openingRegisterAmount}
-                      keyboardType="numeric"
-                      style={tw.style(
-                        'rounded bg-[#FFFFFF] w-full text-2xl border border-[#EDEEF0]',
-                      )}
-                    />
-                  </View>
+                  <>
+                    <View style={tw.style('m-5')}>
+                      <TextInput
+                        onChangeText={setOpeningRegisterAmount}
+                        value={openingRegisterAmount}
+                        keyboardType="numeric"
+                        style={tw.style(
+                          'rounded bg-[#FFFFFF] w-full text-2xl border border-[#EDEEF0]',
+                        )}
+                      />
+                    </View>
+                  </>
+
                 )}
 
                 <Pressable
@@ -322,18 +342,19 @@ const Sale: React.FC<SaleProps> = ({
             </View>
           </View>
         )}
+
         <View style={tw.style('flex-1')}>
           <TabView
             renderTabBar={renderTabBar}
-            navigationState={{index, routes}}
+            navigationState={{ index, routes }}
             renderScene={renderScene}
             onIndexChange={setIndex}
-            initialLayout={{width: layout.width}}
+            initialLayout={{ width: layout.width }}
           />
         </View>
         {isSelected && (
           <Pressable
-            onPress={() => navigation.navigate('AddClient', {data})}
+            onPress={() => navigation.navigate('AddClient', { data })}
             style={tw.style(
               'absolute border border-[#EDEEF0] items-center w-full h-50px bg-[#EDEEF0] bottom-2 mb-2',
             )}>
@@ -349,5 +370,94 @@ const Sale: React.FC<SaleProps> = ({
     </>
   );
 };
+
+// const styles = {
+//   triangle: {
+//       width: 0,
+//       height: 0,
+//       backgroundColor: 'transparent',
+//       // borderStyle: 'solid',
+//   },
+//   arrowUp: {
+//       borderTopWidth: 0,
+//       borderRightWidth: 30,
+//       borderBottomWidth: 30,
+//       borderLeftWidth: 30,
+//       borderTopColor: 'transparent',
+//       borderRightColor: 'transparent',
+//       borderBottomColor: "tomato",
+//       borderLeftColor: 'transparent',
+//   },
+//   arrowRight: {
+//       borderTopWidth: 30,
+//       borderRightWidth: 0,
+//       borderBottomWidth: 30,
+//       borderLeftWidth: "tomato",
+//       borderTopColor: 'transparent',
+//       borderRightColor: 'transparent',
+//       borderBottomColor: 'transparent',
+//       borderLeftColor: "tomato",
+//   },
+//   arrowDown: {
+//       borderTopWidth: 30,
+//       borderRightWidth: 30,
+//       borderBottomWidth: 0,
+//       borderLeftWidth: 30,
+//       borderTopColor: "tomato",
+//       borderRightColor: 'transparent',
+//       borderBottomColor: 'transparent',
+//       borderLeftColor: 'transparent',
+//   },
+//   arrowLeft: {
+//       borderTopWidth: 30,
+//       borderRightWidth: "tomato",
+//       borderBottomWidth: 30,
+//       borderLeftWidth: 0,
+//       borderTopColor: 'transparent',
+//       borderRightColor: "tomato",
+//       borderBottomColor: 'transparent',
+//       borderLeftColor: 'transparent',
+//   },
+//   arrowUpLeft: {
+//       borderTopWidth: 30,
+//       borderRightWidth: "tomato",
+//       borderBottomWidth: 0,
+//       borderLeftWidth: 0,
+//       borderTopColor: "tomato",
+//       borderRightColor: 'transparent',
+//       borderBottomColor: 'transparent',
+//       borderLeftColor: 'transparent',
+//   },
+//   arrowUpRight: {
+//       borderTopWidth: 0,
+//       borderRightWidth: "tomato",
+//       borderBottomWidth: 30,
+//       borderLeftWidth: 0,
+//       borderTopColor: 'transparent',
+//       borderRightColor: "tomato",
+//       borderBottomColor: 'transparent',
+//       borderLeftColor: 'transparent',
+//   },
+//   arrowDownLeft: {
+//       borderTopWidth: 30,
+//       borderRightWidth: 0,
+//       borderBottomWidth: 0,
+//       borderLeftWidth: "tomato",
+//       borderTopColor: 'transparent',
+//       borderRightColor: 'transparent',
+//       borderBottomColor: 'transparent',
+//       borderLeftColor: "tomato",
+//   },
+//   arrowDownRight: {
+//       borderTopWidth: 0,
+//       borderRightWidth: 0,
+//       borderBottomWidth: 30,
+//       borderLeftWidth: "tomato",
+//       borderTopColor: 'transparent',
+//       borderRightColor: 'transparent',
+//       borderBottomColor: "tomato",
+//       borderLeftColor: 'transparent',
+//   },
+// }
 
 export default Sale;
