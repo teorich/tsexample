@@ -143,6 +143,12 @@ const renderTabBar = props => (
   />
 );
 
+const LazyPlaceholder = ({ route }) => (
+  <View style={tw.style(' items-center flex-1 justify-center')}>
+    <Text>Loading {route.title}…</Text>
+  </View>
+);
+
 const renderScene = SceneMap({
   first: FirstRoute,
   second: SecondRoute,
@@ -183,6 +189,8 @@ const Users: React.FunctionComponent<UsersProps> = ({
         </View>
         <View style={tw.style('mt-4  flex-1 rounded mx-2 mb-4 h-screen')}>
           <TabView
+          lazy
+          renderLazyPlaceholder={LazyPlaceholder}
             renderTabBar={renderTabBar}
             navigationState={{index, routes}}
             renderScene={renderScene}

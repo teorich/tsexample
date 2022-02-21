@@ -146,8 +146,6 @@ const RegisterSessionProvider = ({children}) => {
         );
       }
 
-      console.log(currentRegister);
-
       if (currentRegister) {
         setCurrentRegisterSession(currentRegister);
       }

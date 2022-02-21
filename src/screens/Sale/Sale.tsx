@@ -172,6 +172,12 @@ const Sale: React.FC<SaleProps> = ({
     }
   }, [data, setIsSelected]);
 
+  const LazyPlaceholder = ({ route }) => (
+    <View style={tw.style(' items-center flex-1 justify-center')}>
+      <Text>Loading {route.title}…</Text>
+    </View>
+  );
+
   const FirstRoute = () => {
     //   const [flexWrap, setFlexWrap] = useState('wrap');
 
@@ -233,6 +239,7 @@ const Sale: React.FC<SaleProps> = ({
       />
     );
   };
+
 
   const renderScene = SceneMap({
     first: FirstRoute,
@@ -345,6 +352,8 @@ const Sale: React.FC<SaleProps> = ({
 
         <View style={tw.style('flex-1')}>
           <TabView
+          renderLazyPlaceholder={LazyPlaceholder}
+            lazy
             renderTabBar={renderTabBar}
             navigationState={{ index, routes }}
             renderScene={renderScene}
@@ -371,93 +380,6 @@ const Sale: React.FC<SaleProps> = ({
   );
 };
 
-// const styles = {
-//   triangle: {
-//       width: 0,
-//       height: 0,
-//       backgroundColor: 'transparent',
-//       // borderStyle: 'solid',
-//   },
-//   arrowUp: {
-//       borderTopWidth: 0,
-//       borderRightWidth: 30,
-//       borderBottomWidth: 30,
-//       borderLeftWidth: 30,
-//       borderTopColor: 'transparent',
-//       borderRightColor: 'transparent',
-//       borderBottomColor: "tomato",
-//       borderLeftColor: 'transparent',
-//   },
-//   arrowRight: {
-//       borderTopWidth: 30,
-//       borderRightWidth: 0,
-//       borderBottomWidth: 30,
-//       borderLeftWidth: "tomato",
-//       borderTopColor: 'transparent',
-//       borderRightColor: 'transparent',
-//       borderBottomColor: 'transparent',
-//       borderLeftColor: "tomato",
-//   },
-//   arrowDown: {
-//       borderTopWidth: 30,
-//       borderRightWidth: 30,
-//       borderBottomWidth: 0,
-//       borderLeftWidth: 30,
-//       borderTopColor: "tomato",
-//       borderRightColor: 'transparent',
-//       borderBottomColor: 'transparent',
-//       borderLeftColor: 'transparent',
-//   },
-//   arrowLeft: {
-//       borderTopWidth: 30,
-//       borderRightWidth: "tomato",
-//       borderBottomWidth: 30,
-//       borderLeftWidth: 0,
-//       borderTopColor: 'transparent',
-//       borderRightColor: "tomato",
-//       borderBottomColor: 'transparent',
-//       borderLeftColor: 'transparent',
-//   },
-//   arrowUpLeft: {
-//       borderTopWidth: 30,
-//       borderRightWidth: "tomato",
-//       borderBottomWidth: 0,
-//       borderLeftWidth: 0,
-//       borderTopColor: "tomato",
-//       borderRightColor: 'transparent',
-//       borderBottomColor: 'transparent',
-//       borderLeftColor: 'transparent',
-//   },
-//   arrowUpRight: {
-//       borderTopWidth: 0,
-//       borderRightWidth: "tomato",
-//       borderBottomWidth: 30,
-//       borderLeftWidth: 0,
-//       borderTopColor: 'transparent',
-//       borderRightColor: "tomato",
-//       borderBottomColor: 'transparent',
-//       borderLeftColor: 'transparent',
-//   },
-//   arrowDownLeft: {
-//       borderTopWidth: 30,
-//       borderRightWidth: 0,
-//       borderBottomWidth: 0,
-//       borderLeftWidth: "tomato",
-//       borderTopColor: 'transparent',
-//       borderRightColor: 'transparent',
-//       borderBottomColor: 'transparent',
-//       borderLeftColor: "tomato",
-//   },
-//   arrowDownRight: {
-//       borderTopWidth: 0,
-//       borderRightWidth: 0,
-//       borderBottomWidth: 30,
-//       borderLeftWidth: "tomato",
-//       borderTopColor: 'transparent',
-//       borderRightColor: 'transparent',
-//       borderBottomColor: "tomato",
-//       borderLeftColor: 'transparent',
-//   },
-// }
+
 
 export default Sale;

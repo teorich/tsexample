@@ -48,7 +48,7 @@ const ProductAccordion = (props: Props) => {
 
   const renderHeader = (section, i, isActive, sections) => {
     return (
-      <View style={tw.style({ "border-l-4  border-blue": isActive })}>
+      <View style={tw.style({ "border-l-4 rounded border-blue": isActive })}>
         <View style={tw.style("flex   bg-white")}>
           <View style={tw.style("flex-row m-2 items-center")}>
             <View style={tw.style("mr-2")}>
@@ -99,7 +99,6 @@ const ProductAccordion = (props: Props) => {
   };
 
   const renderContent = (section, i, isActive, sections) => {
-    console.log(section);
 
     return (
       <View style={tw.style({ "border-l-4  border-blue": isActive })}>
@@ -134,7 +133,7 @@ const ProductAccordion = (props: Props) => {
                     })
                   }
                   style={tw.style(
-                    "h-40px w-100px  border-[#D8D8D8] border mx-2"
+                    "h-40px w-100px rounded border-[#D8D8D8] border mx-2"
                   )}
                   keyboardType="number-pad"
                 />
@@ -176,7 +175,7 @@ const ProductAccordion = (props: Props) => {
                     })
                   }
                   style={tw.style(
-                    "h-40px w-100px  border-[#D8D8D8]  border mx-2"
+                    "h-40px w-100px  border-[#D8D8D8] rounded border mx-2"
                   )}
                   keyboardType="number-pad"
                 />
@@ -199,7 +198,7 @@ const ProductAccordion = (props: Props) => {
                     },
                   })
                 }
-                style={tw.style("h-100px  border-[#D8D8D8]  border")}
+                style={tw.style("h-100px rounded border-[#D8D8D8]  border")}
               />
             </View>
           </Animatable.View>

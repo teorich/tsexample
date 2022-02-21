@@ -32,6 +32,7 @@ import {useRegisterSession} from '../../providers/RegisterSession.provider';
 import AppModal from '../../screens/components/AppModal';
 import AddCustomer from './AddCustomer';
 import {useAgency} from '../../providers/AgencyProvider';
+import ParkSale from './ParkSale';
 
 interface AddClientProps {
   setIsSelected: any;
@@ -47,12 +48,12 @@ const productReducer = (prevState, action) => {
     case 'INIT':
       array = action.payload.map(item => ({
         product: item,
-        quantity: "",
+        quantity: "1",
         variants: {},
         price: "",
-        discount: "",
+        discount: "0",
         note: "",
-        amount: ""
+        amount: "0"
       }));
       return array;
     case 'CHANGE_QUANTITY':
@@ -116,6 +117,7 @@ const AddClient: React.FC<AddClientProps> = ({navigation, route}) => {
   const [searchCustomer, setSearchCustomer] = useState<string>('');
 
   const [addCustomer, setAddCustomer] = useState<boolean>(false);
+  const [addParkSale, setAddParkSale] = useState<boolean>(false);
 
 
   useFocusEffect(
@@ -196,10 +198,11 @@ const AddClient: React.FC<AddClientProps> = ({navigation, route}) => {
         onSelect={() => {}}
       />
       <AppModal
-        showModal={addCustomer}
-        closeModal={() => setAddCustomer(false)}>
-        <View style={tw.style(' bg-accent')}>
-          <AddCustomer />
+        showModal={addCustomer || addParkSale}
+        closeModal={() => {setAddCustomer(false); setAddParkSale(false)}}>
+        <View>
+          {addCustomer && <AddCustomer />}
+          {addParkSale && <ParkSale />}
         </View>
       </AppModal>
       <ScrollView style={tw.style('mx-1')}>
@@ -227,7 +230,7 @@ const AddClient: React.FC<AddClientProps> = ({navigation, route}) => {
             />
             <Text>Retrieve</Text>
           </Pressable>
-          <Pressable style={tw.style('flex-2 flex-row')}>
+          <Pressable style={tw.style('flex-2 flex-row')} onPress={() => setAddParkSale(true)}>
             <MAIcon name="restore" size={20} style={tw.style('px-1')} />
             <Text>Park</Text>
           </Pressable>
@@ -396,7 +399,7 @@ const AddClient: React.FC<AddClientProps> = ({navigation, route}) => {
                 </View>
                 <View style={tw.style('flex-3')} />
                 <View style={tw.style('flex-1')}>
-                  <Text>3</Text>
+                  <Text>""</Text>
                 </View>
               </View>
               <View style={tw.style('flex-row mb-1 mt-2')}>
@@ -405,7 +408,7 @@ const AddClient: React.FC<AddClientProps> = ({navigation, route}) => {
                 </View>
                 <View style={tw.style('flex-3')} />
                 <View style={tw.style('flex-1')}>
-                  <Text>3</Text>
+                  <Text>-40</Text>
                 </View>
               </View>
               <View style={tw.style('flex-row mb-1 mt-2')}>
@@ -414,7 +417,11 @@ const AddClient: React.FC<AddClientProps> = ({navigation, route}) => {
                 </View>
                 <View style={tw.style('flex-3')} />
                 <View style={tw.style('flex-1')}>
-                  <Text>3</Text>
+                <Text>{
+                    state.reduce(
+                      (previousValue: string, item: any) => +previousValue + +item.amount,
+                      0
+                    )}</Text>
                 </View>
               </View>
               <View style={tw.style('flex-row my-4')}>
@@ -423,7 +430,7 @@ const AddClient: React.FC<AddClientProps> = ({navigation, route}) => {
                 </View>
                 <View style={tw.style('flex-3')} />
                 <View style={tw.style('flex-1')}>
-                  <Text>3</Text>
+                  <Text>30</Text>
                 </View>
               </View>
             </View>
@@ -434,7 +441,11 @@ const AddClient: React.FC<AddClientProps> = ({navigation, route}) => {
                 </View>
                 <View style={tw.style('flex-3')} />
                 <View style={tw.style('flex-1')}>
-                  <Text>3</Text>
+                  <Text>{
+                    state.reduce(
+                      (previousValue: string, item: any) => +previousValue + +item.amount,
+                      0
+                    )}</Text>
                 </View>
               </View>
             </View>

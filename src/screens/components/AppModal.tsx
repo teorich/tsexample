@@ -20,12 +20,19 @@ const AppModal: React.FunctionComponent<AppModalProps> = props => {
       <Modal
         deviceHeight={height}
         deviceWidth={width}
+        backdropOpacity={0.8}
+        animationIn="slideInLeft"
+        animationOut="slideOutRight"
+        animationInTiming={800}
+        animationOutTiming={800}
+        backdropTransitionInTiming={800}
+        backdropTransitionOutTiming={800}
         isVisible={props.showModal}>
-        <View>
-          <Pressable style={tw.style("rounded-full my-2 left-80 bg-white w-28px h-28px")} onPress={() => props.closeModal()}>
-            <Close />
+      
+          <Pressable style={tw.style("rounded-full items-center my-2 left-80 bg-white w-33px h-33px")} onPress={() => props.closeModal()}>
+            <Close style={tw.style("m-auto items-center")} />
           </Pressable>
-        </View>
+      
         <View style={tw.style('bg-transparent font-mulishBold rounded')}>
           {props.children}
         </View>
